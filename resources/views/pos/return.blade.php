@@ -75,7 +75,6 @@
         </div>
         {{-- total show --}}
         <div class="shadow p-3 mb-5 bg-body rounded mt-4">
-
             <div class="row d-flex">
                 <div class="justify_contain"></div>
                 <div class="col">

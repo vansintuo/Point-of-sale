@@ -20,7 +20,7 @@
     @media print {
 
         /* hide every other element */
-        .body * {
+        body * {
             visibility: hidden;
 
         }
@@ -32,59 +32,93 @@
         }
 
         /* ajust the position to away start from top left */
-        /* .print_container {
+        .print_container {
             position: absolute;
-            left: 0px;
+            left: 15%;
             top: 0px;
-        } */
+
+        }
     }
 </style>
 
-<body class="body">
-    <div class="container print_container">
-        <center id="top">
+<body>
+
+    <div class="container print_container bg-white roundd shadow p-4 rounded " style="margin-top:75px">
+        <center id="top" class="mt-4">
             <img src="image/1676966775.jpg" width="3px" alt="ogo"
-                style="border-radius: 50%; background: #e0e0e0;box-shadow:  12px -12px 100px #707070,-12px 12px 100px #ffffff ;width: 100px;";>
+                style="width: 100px;
+                border-radius: 150px;
+                background: #e0e0e0;
+                box-shadow: 5px 5px 8px #9b9b9b, -5px -5px 8px #ffffff;";>
+            <p class="fs-2 link-info fw-bold">Bong-POS</p>
             <!--End Info-->
         </center>
-        <p class="fs-5">Name:<span class="fs-6 link-info">Vansin Tuo</span></p>
-        <p class="fs-5">Address:<span class="fs-6 link-info">Phnom Penh</span></p>
-        <p class="fs-5">Phone Number:<span class="fs-6 link-info">0889999</span></p>
+        <div style="margin-top:60px">
+
+            <p class="fs-5">Name:<span class="fs-6 link-info">Vansin Tuo</span></p>
+            <p class="fs-5">Address:<span class="fs-6 link-info">Phnom Penh</span></p>
+            <p class="fs-5">Phone Number:<span class="fs-6 link-info">0889999</span></p>
+        </div>
+
 
 
         <table class="table  mt-3">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Desciption</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">Amount</th>
+
+
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">1</th>
+                    <th>Hello</th>
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td class="fs-5 fw-bold">Net Total</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="bg-info fs-5 fw-blod">100$</td>
+                </tr>
+                <tr>
+                    <td class="fs-5 fw-bold">Gross Total</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="bg-info fs-5 fw-blod">100$</td>
+                </tr>
+                <tr>
+                    <td class="fs-5 fw-bold">Discount Total</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="bg-info fs-5 fw-blod">100$</td>
+
+                </tr>
+            </tfoot>
         </table>
         {{-- <h3>Resize Me</h3> --}}
     </div>
-    <button onclick="print_invoice()" class="btn btn-warning ml-auto mt-3 " style="margin-left:71%">Print</button>
-
+    <div class="d-flex">
+        <button onclick="print_invoice()" class="btn btn-warning ml-auto mt-3 " style="margin-left:80.5%">Print</button>
+        <button class="btn btn-warning ml-auto mt-3 ml-2 back" style="margin-left:10px;">Back</button>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
@@ -99,7 +133,7 @@
         window.print();
     }
     $(document).ready(function() {
-        $('body').on('click', 'print_invoice', function() {
+        $('body').on('click', '.back', function() {
             alert("asdfghjkl");
         })
     })

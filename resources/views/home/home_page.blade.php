@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="{{ asset('/css/vertical-layout-light/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="images/favicon.png" />
+    {{-- for font family cdn --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&family=Tilt+Neon&display=swap" rel="stylesheet">
 </head>
 
 <body>
