@@ -69,7 +69,7 @@ font-family: 'Tilt Neon', cursive;">
 
         <table class="table " id="print_payment">
         </table>
-        {{-- <table class="table  mt-3">
+        <table class="table  mt-3">
             <thead>
                 <tr>
                     <th scope="col">Desciption</th>
@@ -119,7 +119,7 @@ font-family: 'Tilt Neon', cursive;">
 
                 </tr>
             </tfoot>
-        </table> --}}
+        </table>
         {{-- <h3>Resize Me</h3> --}}
     </div>
     <div class="d-flex">

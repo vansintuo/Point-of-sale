@@ -72,17 +72,15 @@
 
 
                     </div>
-                    <div class="btn btn-primary d-block h8 " id="payment"  >PAY
+                    <div class="btn btn-primary d-block h8 " id="payment">PAY
                         <span class="fas  ms-2"></span>
                         <span class=" total"></span>
                         <i class="fa-duotone fa-dollar-sign"
                             style="--fa-primary-color: #3a8ffd; --fa-secondary-color: #3a8ffd;"></i>
                         <span class="ms-3 fas fa-arrow-right"></span>
-                        
+
                     </div>
 
-                    <a type="button" class="btn btn btn-danger prints" href="{{ url('invoice') }}"> <i
-                            class="fa-regular fa-credit-card"></i>Invoice</a>
                 </div>
 
             </div>
@@ -282,7 +280,7 @@
                     }
                     $('#print_payment').find('tbody').after(gb);
 
-
+                    window.location = 'http://127.0.0.1:8000/invoice';
                     // $('#payment').on('click', function() {
                     //     window.print();
                     // })
