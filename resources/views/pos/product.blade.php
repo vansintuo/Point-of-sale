@@ -121,9 +121,40 @@
 </div>
 
 <script>
-    // $(document).ready(function(){
-    //     $(".addMore").on("click",function(){
-    //         alert("23e");
-    //     })
-    // })
+    $(document).ready(function() {
+        $('.prints').on('click', function() {
+            alert("ggggg")
+            $('#Payment').modal('show');
+
+            $('#print_payment').html(`
+                                <table  id="print_invoice">                 
+                                    <thead>
+                                        <tr>
+                                            <th scope=" col" >code</th>
+                                            <th scope=" col " style="margin-left:30px">Title</th>
+                                            <th scope=" col" style="margin-left:30px">qty</th>
+                                            <th scope=" col" style="margin-left:30px">Discount</th>
+                                            <th scope=" col" style="margin-left:30px">total</th>                                
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            `);
+            let table = $('#table_lenght').find('tr').length;
+            var gb = "";
+            for (var i = 1; i < table - 1; i++) {
+                gb += `
+                                <tr >  
+                                <td class="code">${$('.table').find(`tr:eq(${Number(i)}) td:eq(0)`).text()}</td>
+                                <td class="description">${$('.table').find(`tr:eq(${Number(i)}) td:eq(1)`).text()}</td>
+                                <td class="quantity009"> ${$('.table').find(`tr:eq(${Number(i)}) td:eq(2) input`).val()}</td>
+                                <td class=""> ${$('.table').find(`tr:eq(${Number(i)}) td:eq(3) input`).val()}</td>
+                                <td class=""> ${$('.table').find(`tr:eq(${Number(i)}) td:eq(5)`).text()}</td>                     
+                                </tr>
+                                `;
+            }
+            $('#print_payment').find('tbody').after(gb);
+        })
+    })
 </script>

@@ -16,6 +16,20 @@ use App\Models\Sale_Headers;
 
 class SaleLineController extends Controller
 {
+
+
+    //get salelien
+    public function index_sale()
+    {
+        $sales_line = Sale_Line::query()->get();
+        return view('report.print', [
+            'sales_line' => $sales_line
+        ]);
+    }
+
+
+
+    // get customer 
     public function index()
     {
         $customer = Customer::all();

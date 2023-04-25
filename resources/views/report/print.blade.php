@@ -10,6 +10,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&family=Tilt+Neon&display=swap"
+        rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
 </head>
@@ -43,7 +47,9 @@
 
 <body>
 
-    <div class="container print_container bg-white roundd shadow p-4 rounded " style="margin-top:75px">
+    <div class="container print_container bg-white roundd shadow p-4 rounded "
+        style="margin-top:75px;font-family: 'PT Serif', serif;
+font-family: 'Tilt Neon', cursive;">
         <center id="top" class="mt-4">
             <img src="image/1676966775.jpg" width="3px" alt="ogo"
                 style="width: 100px;
@@ -55,14 +61,15 @@
         </center>
         <div style="margin-top:60px">
 
-            <p class="fs-5">Name:<span class="fs-6 link-info">Vansin Tuo</span></p>
+            <p class="fs-5">Name:<span class="fs-6 link-info" id="cos"></span></p>
             <p class="fs-5">Address:<span class="fs-6 link-info">Phnom Penh</span></p>
             <p class="fs-5">Phone Number:<span class="fs-6 link-info">0889999</span></p>
         </div>
 
 
-
-        <table class="table  mt-3">
+        <table class="table " id="print_payment">
+        </table>
+        {{-- <table class="table  mt-3">
             <thead>
                 <tr>
                     <th scope="col">Desciption</th>
@@ -112,7 +119,7 @@
 
                 </tr>
             </tfoot>
-        </table>
+        </table> --}}
         {{-- <h3>Resize Me</h3> --}}
     </div>
     <div class="d-flex">
@@ -120,21 +127,24 @@
         <button class="btn btn-warning ml-auto mt-3 ml-2 back" style="margin-left:10px;">Back</button>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-</script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"
-    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+@include('srcipt')
 <script>
     function print_invoice() {
         window.print();
     }
     $(document).ready(function() {
         $('body').on('click', '.back', function() {
-            alert("asdfghjkl");
+            window.location.href = 'http://127.0.0.1:8000/sales_lines'
+        })
+        let table = $('#table_lenght').find('tr').length;
+        console.log("here is table:", table);
+        $('.prints').on('click', function() {
+            alert("dfghjk")
+
+        })
+        $('.prints').on('click', function() {
+            alert("dfghjk")
+
         })
     })
 </script>
