@@ -52,9 +52,21 @@ class SaleLineController extends Controller
 
     public function add_sales_lines(Request $request)
     {
+        // dd($request->all());
+
         $data = new Sale_Line();
-        $data->document_no = $request->document_no;
+
+        $header = Sale_Headers::latest()->first();
+
+        if ($header != null) {
+            $data->document_no = $header->id;
+        } else {
+            $data->document_no = 1;
+        }
+
+
         $data->item_no = $request->item_no;
+
         $data->item_description = $request->item_description;
         // $data->item_desciption_2 = $request->item_desciption_2;
         // $data->unit_of_measure = $request->unit_of_measure;
@@ -93,11 +105,21 @@ class SaleLineController extends Controller
     }
 
     // insert customer to sale header
-    public function add_customers(Request $request, $id)
+    public function add_customers($id)
     {
+
         $customer = Customer::where('no', $id)->get();
         $data_c = new Sale_Headers();
-        $data_c->no = $customer[0]->no;
+
+        $header = Sale_Headers::latest()->first();
+
+        if ($header != null) {
+            $data_c->no = $header->id + 1;
+        } else {
+            $data_c->no = 1;
+        }
+
+        $data_c->customer_no = $customer[0]->no;
         $data_c->customer_name = $customer[0]->name;
         $data_c->customer_name_2 = $customer[0]->name_2;
         $data_c->address = $customer[0]->address;
@@ -105,8 +127,15 @@ class SaleLineController extends Controller
         $data_c->order_datetime = now("Asia/Phnom_Penh")->format('Y-m-d H:i:s');
         $data_c->save();
 
-        return response()->json([]);
+        // kak code
+        // return response()->json([]);
+
+        return $header->id + 1;
     }
+
+    // public function index_h(Request $request){
+
+    // }
 
     //for search 
     public function search1(Request $request)
@@ -161,5 +190,18 @@ class SaleLineController extends Controller
     {
         $order = Sale_Line::find($id);
         return redirect('report.payment', compact('order'));
+    }
+
+    public function receipt(Request $request)
+    {
+
+        $sale_header = Sale_Headers::where('no', request('id'))->get();
+        // Select * From sale_header where no = 10 tuk oy ah o mer
+        $sale_line = Sale_Line::where('document_no', request('id'))->get();
+
+        // tuk oy ah o mer tt
+        // dd($sale_header, $sale_line);
+
+        return view('report.print', compact('sale_header', 'sale_line'));
     }
 }

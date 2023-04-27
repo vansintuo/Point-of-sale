@@ -14,7 +14,7 @@
             {{-- <label for=""> Select Customer </label> --}}
             <datalist id="datalistOptions">
                 @foreach ($customer as $data)
-                    <option value="{{ $data->no }}">{{ $data->no }}</option>
+                    <option value="{{ $data->name }}">{{ $data->no }}</option>
                 @endforeach
             </datalist>
         </div>

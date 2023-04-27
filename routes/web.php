@@ -191,12 +191,13 @@ Route::group(['prefix' => 'barcode'], function () {
 Route::get('/insert_you', function () {
     return view('for_test.insert_you');
 });
+
 Route::get('/display_you', function () {
     return view('for_test.display_you');
 });
+
 Route::get('/master', function () {
     return view('for_test.master');
 });
-Route::get('/invoice', function () {
-    return view('report.print');
-});
+
+Route::get('/invoice/{id}', [SaleLineController::class, 'receipt']);

@@ -173,7 +173,6 @@
             var total_qty = (qty * unit_price) - total_dis;
             par.find('td:eq(5)').text(Number(total_qty).toFixed(2))
             // console.log(total_qty);
-
         })
         //for search 
         $('#search').on('keyup', function() {

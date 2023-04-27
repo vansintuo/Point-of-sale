@@ -63,7 +63,7 @@
                                         details</p>
                                     <div class="form print_container ">
                                         {{-- for show data table  --}}
-                                        <table class="table " id="print_payment">
+                                        <table class="table table_payment_b_sl_o" id="print_payment">
                                         </table>
                                     </div>
                                 </div>
@@ -101,7 +101,6 @@
                 let table = $('#table_lenght').find('tr').length;
 
                 var id = $('#exampleDataList').val()
-                console.log(id)
                 $.ajax({
                     url: '/sales_lines/setcustomer/' + id,
                     type: 'post',
@@ -120,28 +119,29 @@
                         });
 
                         setTimeout(function() {
-                            window.location.href = 'http://127.0.0.1:8000/sales_lines'
+                            window.location.href = 'http://127.0.0.1:8000/invoice/' + data
                         }, 1500);
-
-                        console.log(data);
 
                     }
                 });
 
                 for (var i = 1; i < table - 1; i++) {
-                    var document_no = $('.table').find(`tr:eq(${i}) td:eq(0)`).text();
-                    var item_no = $('.table').find(`tr:eq(${i}) td:eq(0)`).text();
-                    var item_description = $('table').find(`tr:eq(${i}) td:eq(1)`).text();
+                    var document_no = $('.table_payment_b_sl_o').find(`tr:eq(${i}) td:eq(0)`).text();
+                    var item_no = $('.table_payment_b_sl_o').find(`tr:eq(${i}) td:eq(0)`).text();
+                    // console.log(item_no);
+                    var item_description = $('.table_payment_b_sl_o').find(`tr:eq(${i}) td:eq(1)`).text();
                     // var item_desciption_2 = $('table').find(`tr:eq(${i}) td:eq(1)`).text();
                     // var unit_of_measure = $('table').find(`tr:eq(${i}) td:eq(1)`).text();
                     // var qty_per_unit_of_measure = $('table').find(`tr:eq(${i}) td:eq(1)`).text();
-                    var quantity = $('table').find(`tr:eq(${i}) td:eq(2)`).text();
+                    var quantity = $('.table_payment_b_sl_o').find(`tr:eq(${i}) td:eq(2)`).text();
                     // var discount_percentage = $('table').find(`tr:eq(${i}) td:eq(1)`).text();
-                    var discount_amount = $('.total_discount', 255).text();
+                    // var discount_amount = $('.total_discount', 255).text();
+                    var discount_amount = $('.table_payment_b_sl_o').find(`tr:eq(${i}) td:eq(3)`).text();
+
                     // var amount_lcy = $('table').find(`tr:eq(${i}) td:eq()`).text();
                     // var item_category_code = $('table').find(`tr:eq(${i}) td:eq()`).text();
                     // var item_group_code = $('table').find(`tr:eq(${i}) td:eq()`).text();
-                    var amount = $('table').find(`tr:eq(${i}) td:eq(5)`).text();
+                    var amount = $('.table_payment_b_sl_o').find(`tr:eq(${i}) td:eq(4)`).text();
 
                     // console.log("here is items_no:", no);
                     // console.log("here is document_no:", document_no);
@@ -246,6 +246,7 @@
                         title: 'Please select customer!',
                         text: 'Something went wrong!',
                     })
+
                 } else {
 
                     $('#Payment').modal('show');
@@ -280,10 +281,12 @@
                     }
                     $('#print_payment').find('tbody').after(gb);
 
-                    window.location = 'http://127.0.0.1:8000/invoice';
+                    // Fuck this shit
                     // $('#payment').on('click', function() {
                     //     window.print();
                     // })
+                    // window.location = 'http://127.0.0.1:8000/invoice';
+
                 }
             });
         });

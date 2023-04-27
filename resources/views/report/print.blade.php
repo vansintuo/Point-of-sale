@@ -48,10 +48,10 @@
 <body>
 
     <div class="container print_container bg-white roundd shadow p-4 rounded "
-        style="margin-top:75px;font-family: 'PT Serif', serif;
-font-family: 'Tilt Neon', cursive;">
+        style="margin-top:50px;font-family: 'PT Serif', serif;
+        font-family: 'Tilt Neon', cursive;">
         <center id="top" class="mt-4">
-            <img src="image/1676966775.jpg" width="3px" alt="ogo"
+            <img src="{{ asset('image/1676966775.jpg') }}" width="3px" alt="ogo"
                 style="width: 100px;
                 border-radius: 150px;
                 background: #e0e0e0;
@@ -59,71 +59,83 @@ font-family: 'Tilt Neon', cursive;">
             <p class="fs-2 link-info fw-bold">Bong-POS</p>
             <!--End Info-->
         </center>
+        {{-- <p class="bg-warning col-xl-12" style="height:30px"></p> --}}
+
+        <?php
+        // dd($sale_header);
+        ?>
+
         <div style="margin-top:60px">
 
-            <p class="fs-5">Name:<span class="fs-6 link-info" id="cos"></span></p>
-            <p class="fs-5">Address:<span class="fs-6 link-info">Phnom Penh</span></p>
-            <p class="fs-5">Phone Number:<span class="fs-6 link-info">0889999</span></p>
+            @foreach ($sale_header as $header)
+                <p class="fs-5">Name : <span class="fs-6 link-info" id="cos">{{ $header->customer_name }}</span>
+                </p>
+                <p class="fs-5">Address : <span class="fs-6 link-info"> {{ $header->address }} </span></p>
+
+                <p class="fs-5">Phone Number : <span class="fs-6 link-info">0889999</span></p>
+            @endforeach
+
+
+
         </div>
+        <div>
 
 
-        <table class="table " id="print_payment">
-        </table>
-        <table class="table  mt-3">
-            <thead>
-                <tr>
-                    <th scope="col">Desciption</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Qty</th>
-                    <th scope="col">Discount</th>
-                    <th scope="col">Amount</th>
+
+            <table class="table  mt-3">
+                <thead class="bg-info">
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Discount</th>
+                        <th scope="col">Amount</th>
 
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Hello</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td class="fs-5 fw-bold">Net Total</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="bg-info fs-5 fw-blod">100$</td>
-                </tr>
-                <tr>
-                    <td class="fs-5 fw-bold">Gross Total</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="bg-info fs-5 fw-blod">100$</td>
-                </tr>
-                <tr>
-                    <td class="fs-5 fw-bold">Discount Total</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="bg-info fs-5 fw-blod">100$</td>
+                    </tr>
+                </thead>
+                @foreach ($sale_line as $line)
+                    <tbody>
+                        <tr>
+                            <th>{{ $line->item_no }}</th>
+                            <td>{{ $line->item_description }}</td>
+                            <td>{{ number_format($line->quantity, 2) }}</td>
+                            <td>%{{ number_format($line->discount_amount, 2) }}</td>
+                            <td>${{ number_format($line->amount, 2) }}</td>
+                        </tr>
+                    </tbody>
+                @endforeach
 
-                </tr>
-            </tfoot>
-        </table>
-        {{-- <h3>Resize Me</h3> --}}
+            </table>
+        </div>
+        <div>
+            <div class="d-flex">
+                <div class="col-xl-9 grid-margin stretch-card flex-column ">
+                    <p class="fs-4">Thank You!!</p>
+                    <p class="fs-6 fw-bold">Bong-POS $ Blue Technology</p>
+                    <p>
+                        <span>Blue technology is a trusted business software solutions provider focusing on the
+                            Cambodian and
+                            ASEAN
+                        </span><br>
+                        <span> markets with customers in Cambodia, Vietnam, Myanmar, Laos, and Mongolia.</span>
+                    </p>
+                </div>
+                <div class="col-xl-3 grid-margin stretch-card flex-column ">
+                    <div class="ml-3">
+                        <div class="">Sub Total:<span style="margin-left:30px;"> ${{ $sale_line->sum('amount') }}
+                            </span></div>
+                        <div class="mt-2 ">Tax:<span style="margin-left:72px;">0.0$</span></div>
+                        <div class=" mt-2 fw-bold text-primary">Total:<span style="margin-left:59px;">
+                                ${{ $sale_line->sum('amount') }} </span></div>
+                    </div>
+                </div>
+            </div>
+            {{-- <p class="bg-warning col-xl-12" style="height:10px"></p> --}}
+        </div>
     </div>
-    <div class="d-flex">
-        <button onclick="print_invoice()" class="btn btn-warning ml-auto mt-3 " style="margin-left:80.5%">Print</button>
+    <div class="d-flex" style="margin-left:85.5%">
+        <button onclick="print_invoice()" class="btn btn-warning ml-auto mt-3 ">Print</button>
         <button class="btn btn-warning ml-auto mt-3 ml-2 back" style="margin-left:10px;">Back</button>
     </div>
 </body>
@@ -136,16 +148,7 @@ font-family: 'Tilt Neon', cursive;">
         $('body').on('click', '.back', function() {
             window.location.href = 'http://127.0.0.1:8000/sales_lines'
         })
-        let table = $('#table_lenght').find('tr').length;
-        console.log("here is table:", table);
-        $('.prints').on('click', function() {
-            alert("dfghjk")
 
-        })
-        $('.prints').on('click', function() {
-            alert("dfghjk")
-
-        })
     })
 </script>
 

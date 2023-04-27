@@ -10,7 +10,7 @@
 
                         @include('report.Payment')
                         {{-- <button type="button" class="btn btn btn-danger prints" href="{'dashboards'}"> --}}
-                        <a type="button" class="btn btn btn-danger prints" href="{{ url('homePage') }}"> <i
+                        <a type="button" class="btn btn btn-danger " href="{{ url('homePage') }}"> <i
                                 class="fa-regular fa-credit-card"></i> Report</a>
 
 
@@ -123,7 +123,6 @@
 <script>
     $(document).ready(function() {
         $('.prints').on('click', function() {
-            alert("ggggg")
             $('#Payment').modal('show');
 
             $('#print_payment').html(`
