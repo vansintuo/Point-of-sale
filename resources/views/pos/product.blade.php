@@ -64,7 +64,7 @@
                                 <div class="container">
                                     <div class="col-12 ">
                                         <div class="">
-                                            <span class="fw-bold h7 text-center" id="cos">Alex Parkinson</span>
+                                            <span class="fw-bold h7 text-center" id="cos"></span>
                                             <div class="">
                                                 <p class="h7 fw-bold mb-1">Pay this Invoice</p>
                                                 <p class="textmuted h8 mb-2">Make payment for this invoice by filling in

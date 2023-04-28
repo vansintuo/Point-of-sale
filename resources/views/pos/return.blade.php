@@ -6,8 +6,6 @@
                 aria-controls="example">
         </div>
         <div id="search_list"></div>
-
-
         <div class="form-group ml-3">
             <input style="width: 170px;" class="form-control customerlist" list="datalistOptions" id="exampleDataList"
                 placeholder="Select Customer">
@@ -48,12 +46,12 @@
                                 <th scope="col">QTY</th>
                                 <th scope="col">
                                     Discount
-                                    <select>
-                                        <option value="saab">%</option>
-                                        <option value="opel">$</option>
+                                    <select class="list_discount">
+                                        <option value="%">%</option>
+                                        <option value="$">$</option>
                                     </select>
                                 </th>
-                                <th scope="col">Price</th>
+                                <th scope="col">SubTotal</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -120,9 +118,4 @@
         </div>
     </div>
     {{-- end --}}
-
-
-
-
-
 </div>

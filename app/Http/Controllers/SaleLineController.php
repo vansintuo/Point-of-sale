@@ -73,7 +73,15 @@ class SaleLineController extends Controller
         // $data->qty_per_unit_of_measure = $request->qty_per_unit_of_measure;
         $data->quantity = $request->quantity;
         // $data->discount_percentage = $request->discount_percentage;
-        $data->discount_amount = $request->discount_amount;
+
+
+        if ($request->discount_type == '$') {
+            $data->discount_amount = $request->discount_amount;
+        } else {
+            $data->discount_percentage = $request->discount_amount;
+        }
+
+
         $data->amount = $request->amount;
         // $data->amount_lcy = $request->amount_lcy;
         // $data->item_category_code = $request->item_category_code;
@@ -108,7 +116,10 @@ class SaleLineController extends Controller
     public function add_customers($id)
     {
 
+
         $customer = Customer::where('no', $id)->get();
+        // dd($customer[0]);
+
         $data_c = new Sale_Headers();
 
         $header = Sale_Headers::latest()->first();

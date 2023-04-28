@@ -86,32 +86,65 @@
 </body>
 <script>
     $(document).ready(function() {
+
         // for discount specifice item
-        $('BODY').on('change', '#discount', function() {
+        $('BODY').on('keyup', '#discount', function() {
             var ethis = $(this);
             var par = ethis.parents('tr');
             var index = par.index();
-            var qty = par.find('td:eq(2) input').val()
-            var dis = par.find('td:eq(3) input').val();
-            var unit_price = par.find('td:eq(4)').text();
-            var subtotal = par.find('td:eq(5)').text();
-            var total = (unit_price * qty) - ((unit_price * qty) * dis / 100);
-            par.find('td:eq(5)').text((total).toFixed(2));
-            //for sum total
-            let sum = 0;
-            $('.subprice').each(function() {
-                sum += parseFloat($(this).text());
-            });
-            $('.total').text(Number(sum).toFixed(2));
-            // console.log(sum);
-            // //end
-            //sum for total discount
-            var total_dis_all = total_sum - sum;
-            // console.log("This is for Total discount", total_dis_all);
-            $('.total_discount').text(Number(total_dis_all).toFixed(2));
+            var qty = par.find('td:eq(2) input').val();
+            // kak code
+            // var dis = par.find('td:eq(3) input').val();
+            var dis = ethis.val()-0;
+
+            if ($('.list_discount').find(":selected").val() == "%") {
+
+                var unit_price = par.find('td:eq(4)').text();
+
+                // kak code
+                // var subtotal = par.find('td:eq(5)').text();
+                var subtotal = (qty - 0) * (unit_price - 0);
+
+                var total = subtotal - (subtotal * dis) / 100;
+                
+                par.find('td:eq(5)').text((total).toFixed(2));
+                //for sum total
+                let sum = 0;
+                $('.subprice').each(function() {
+                    sum += parseFloat($(this).text());
+                });
+                $('.total').text(Number(sum).toFixed(2));
+                //end
+                //sum for total discount
+                var total_dis_all = total_sum - sum;
+                $('.total_discount').text(Number(total_dis_all).toFixed(2));
+            } else {
+
+                var unit_price = par.find('td:eq(4)').text();
+
+                // kak code
+                // var subtotal = par.find('td:eq(5)').text();
+                var subtotal = (qty - 0) * (unit_price - 0);
+
+                var total = subtotal - dis;
+
+                par.find('td:eq(5)').text((total).toFixed(2));
+                //for sum total
+                let sum = 0;
+                $('.subprice').each(function() {
+                    sum += parseFloat($(this).text());
+                });
+                $('.total').text(Number(sum).toFixed(2));
+                //end
+                //sum for total discount
+                var total_dis_all = total_sum - sum;
+                $('.total_discount').text(Number(total_dis_all).toFixed(2));
+
+            }
+
+
             //end
         });
-
 
 
         //change customer
@@ -119,10 +152,17 @@
         $('.customerlist').on('change', function() {
             let name = $('.customerlist').val()
             $('span#cos').text(name);
-        })
+        });
 
 
+        $('.list_discount').on('change', function() {
+            let name = $(this).find(':selected').val();
 
+            $('.discount_xx').each(function(i,v){
+                $(this).attr('placeholder', name);
+            });
+
+        });
 
 
         //for print invoice
@@ -222,7 +262,7 @@
                 // console.log(dis)
                 var price = $(`.${item.trim()}price`).text();
 
-                console.log(price);
+                // console.log(price);
 
                 $(`.${item.trim()}qty`).val(Number(priceChange) + 1);
                 var sub_total = $(`.${item.trim()}subprice`).text(Number((price) * (Number(
@@ -267,7 +307,7 @@
                     <td>${item}</td>
                     <td>${title}</td>
                     <td><input type="number" class='${trim}qty' id="qty" value="1"></td>
-                    <td><input type="number" class='${trim}discount ' id="discount" placeholder="%"></td>
+                    <td><input type="number" class='${trim}discount discount_xx' id="discount" placeholder="%"></td>
                     <td class='${trim}price' id="isnone">${price}</td>
                     <td class='${trim}subprice subprice'>${price}</td>
                     <td class='${trim}gross_total gross_total ' id="isnone">${price}</td>

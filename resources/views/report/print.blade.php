@@ -100,7 +100,14 @@
                             <th>{{ $line->item_no }}</th>
                             <td>{{ $line->item_description }}</td>
                             <td>{{ number_format($line->quantity, 2) }}</td>
-                            <td>%{{ number_format($line->discount_amount, 2) }}</td>
+
+                            @if ($line->discount_amount != 0)
+                                <td>${{ number_format($line->discount_amount, 2) }}</td>
+                            @else
+                                <td>%{{ number_format($line->discount_percentage, 2) }}</td>
+                            @endif
+
+
                             <td>${{ number_format($line->amount, 2) }}</td>
                         </tr>
                     </tbody>

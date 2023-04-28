@@ -119,7 +119,8 @@
                         });
 
                         setTimeout(function() {
-                            window.location.href = 'http://127.0.0.1:8000/invoice/' + data
+                            window.location.href = 'http://127.0.0.1:8000/invoice/' +
+                                data
                         }, 1500);
 
                     }
@@ -143,6 +144,10 @@
                     // var item_group_code = $('table').find(`tr:eq(${i}) td:eq()`).text();
                     var amount = $('.table_payment_b_sl_o').find(`tr:eq(${i}) td:eq(4)`).text();
 
+                    var discount_type = $('.list_discount').find(":selected").val();
+
+
+
                     // console.log("here is items_no:", no);
                     // console.log("here is document_no:", document_no);
                     //varible for customer add to sale_header
@@ -157,6 +162,7 @@
                         // 'discount_percentage': discount_percentage,
                         'discount_amount': discount_amount,
                         'amount': amount,
+                        'discount_type': discount_type,
 
                         // 'amount_lcy': amount_lcy,
                         // 'item_category_code': item_category_code,
@@ -239,14 +245,26 @@
             $('#btn_payment').on('click', function() {
 
                 let name = $('.customerlist').val();
+                let item = $("#table_lenght tr").length;
 
-                if (name == '') {
+                if (name == '' && item == 2) {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Please select customer!',
-                        text: 'Something went wrong!',
-                    })
-
+                        title: 'Please select customer and Item!',
+                        text: 'Somethings went wrong!',
+                    });
+                } else if (name != "" && item == 2) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Please select Item!',
+                        text: 'Somethings went wrong!',
+                    });
+                } else if (item != 2 && name == "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Please select Customer!',
+                        text: 'Somethings went wrong!',
+                    });
                 } else {
 
                     $('#Payment').modal('show');
