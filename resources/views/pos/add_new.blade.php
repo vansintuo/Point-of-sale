@@ -36,15 +36,9 @@
                                 name="address">
                         </div>
 
-
                         <div class="form-group col-md-6">
-                            <label for="inputSelesperson" name="salesperson_code">Phone NUmber</label>
-                            <input type="text" class="form-control" id="inputEmail4" placeholder="855+"
-                                name="phone_no">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputSelesperson" name="salesperson_code">Phone NUmber</label>
-                            <input type="text" class="form-control" id="inputEmail4" placeholder="855+"
+                            <label for="inputSelesperson" name="salesperson_code">Phone Number</label>
+                            <input type="text" class="form-control" id="inputEmail4" placeholder="+855"
                                 name="phone_no_2">
                         </div>
 
@@ -60,7 +54,7 @@
                                 <option id="inputState" type="input">No</option>
                                 <option id="inputState" type="input">Yes</option>
                             </select>
-                        </div>
+                        </div>​
                     </div>
 
                     <div class="form-group">
@@ -74,6 +68,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" id="go">Submit</button>
+                        // b sl soy
                     </div>
                 </form>
             </div>
