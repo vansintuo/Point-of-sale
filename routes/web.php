@@ -17,6 +17,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\SaleLineController;
 use App\Models\Sale_Headers;
+use App\Models\Sale_Line;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ use App\Models\Sale_Headers;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboards', function () {
@@ -163,9 +164,9 @@ Route::group(['prefix' => 'sales_lines'], function () {
     //add to sale header
     Route::post('/setcustomer/{id}', [SaleLineController::class, 'add_customers']);
     //for invioce
-    Route::get('/invoice', function () {
-        return view('report.receipt');
-    });
+
+    //for print on dashboard 
+    Route::get('/dashboard', [SaleLineController::class, 'data']);
 });
 //for add customer to sal_header
 
@@ -200,4 +201,5 @@ Route::get('/master', function () {
     return view('for_test.master');
 });
 
+Route::get('/invoice/{id}', [SaleLineController::class, 'receipt']);
 Route::get('/invoice/{id}', [SaleLineController::class, 'receipt']);

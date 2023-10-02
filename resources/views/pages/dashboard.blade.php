@@ -73,14 +73,37 @@
                 </div>
             </div>
             <div class="col-xl-4 grid-margin stretch-card flex-column">
-                <div class="row">
+                <div class="row card">
                     <div class="col-md-12 grid-margin stretch-card">
-                        <div id="piechart" style="width: 900px; height: 500px;"></div>
+                        <div id="piechart" style="width: 900px; height: 500px;margin-top:10px">
+                            <span class="text-uppercase text-primary fw-bold" style="font-size: 30px;">My daily
+                                Report</span>
+
+                            <ul>
+                                <li>
+                                    <div class="h6 mt-2">Year : <span class="text-primary">1000$</span> </div>
+                                </li>
+                                <li>
+                                    <div class="h6">Monthly : <span class="text-primary">200$</span></div>
+                                </li>
+                                <li>
+                                    <div class="h6">Week : <span class="text-primary">78.8$</span> </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
         </div>
+        {{-- <input type="number" id="myInput"> --}}
+        <div class="col-6">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="number" class="form-control" id="myInput" aria-describedby="emailHelp" class="bg-warning">
+        </div>
+
+        <button onclick="changeInputType()">Change Type</button>
+
         {{-- <div class="row">
             <div class="col-xl-4 grid-margin stretch-card">
                 <div class="card">
@@ -267,53 +290,6 @@
             </div>
         </div> --}}
 
-
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="table-responsive pt-3">
-                        <table class="table table-striped project-orders-table table table-striped table-bordered"
-                            style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th class="ml-5">ID</th>
-
-                                    <th>Customer</th>
-                                    <th>Date-Time</th>
-                                    <th>Dicount Amount</th>
-                                    <th>Amount</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#D1</td>
-
-                                    <td>Beulah Cummings</td>
-                                    <td>03 Jan 2019</td>
-                                    <td>$ 5235</td>
-                                    <td>1.3K</td>
-
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Name</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th class="bg-info">100$</th>
-
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:partials/_footer.html -->
@@ -333,31 +309,48 @@
     </footer>
     <!-- partial -->
 </div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script>
-    google.charts.load('current', {
-        'packages': ['corechart']
+    $(function() {
+        alert("Hello, world!");
     });
-    google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-            ['Task', 'Hours per Day'],
-            ['Month', 11],
-            ['Week', 2],
-            ['day', 2],
-            // ['Watch TV', 2],
-            // ['Sleep', 7]
-        ]);
-
-        var options = {
-            title: 'My Daily Activities'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
+    function changeInputType() {
+        var input = document.getElementById("myInput");
+        input.type = "text";
     }
+
+    // google.charts.load('current', {
+    //     'packages': ['corechart']
+    // });
+    // google.charts.setOnLoadCallback(drawChart);
+
+    // function drawChart() {
+    //     var data = google.visualization.arrayToDataTable([
+    //         ['Task', 'Hours per Day'],
+    //         ['Month', 11],
+    //         ['Week', 2],
+    //         ['day', 2],
+    //         // ['Watch TV', 2],
+    //         // ['Sleep', 7]
+    //     ]);
+    //     var options = {
+    //         title: 'My Daily Activities'
+    //     };
+    //     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    //     chart.draw(data, options);
+    // }
+
+
+    // function handleInput(input) {
+    //     // Remove any non-alphanumeric characters
+    //     input.value = input.value.replace(/[^a-zA-Z0-9]/g, '');
+
+    //     // Handle the input value
+    //     console.log('Input value:', input.value);
+    // }
 </script>

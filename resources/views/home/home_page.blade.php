@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta charset="utf-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PolluxUI Admin</title>
     <!-- base:css -->
@@ -18,25 +17,24 @@
     {{-- for font family cdn --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&family=Tilt+Neon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&family=Tilt+Neon&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-<div class="row" id="proBanner">
-    <div class="col-12">
-      
-        <i class="typcn typcn-delete-outline" id="bannerClose"></i>
+    <div class="row" id="proBanner">
+        <div class="col-12">
+
+            <i class="typcn typcn-delete-outline" id="bannerClose"></i>
+        </div>
     </div>
-  </div>
-<div class="container-scroller">
+    <div class="container-scroller">
         @include('pages.header')
         <!-- call for menu -->
         <div class="container-fluid page-body-wrapper">
             @include('pages.menu')
             <!-- partial -->
-         
-                    @include('pages.dashboard') 
-         
+            @include('pages.dashboard')
         </div>
     </div>
 

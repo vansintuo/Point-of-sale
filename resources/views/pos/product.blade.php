@@ -2,7 +2,7 @@
 <div class="col-xl-7 grid-margin stretch-card flex-column ">
     <div class="row">
         <div class="container-fluid">
-            <div class="px-lg-5">
+            <div class="px-lg-6 ml-4">
                 <!-- For demo purpose -->
                 <div class="row py-1">
                     <div class="col-lg-12 mx-auto">
@@ -10,12 +10,7 @@
 
                         @include('report.Payment')
                         {{-- <button type="button" class="btn btn btn-danger prints" href="{'dashboards'}"> --}}
-                        <a type="button" class="btn btn btn-danger " href="{{ url('homePage') }}"> <i
-                                class="fa-regular fa-credit-card"></i> Report</a>
 
-
-                        <a type="button" class="btn btn btn-danger prints" href="{{ url('invoice') }}"> <i
-                                class="fa-regular fa-credit-card"></i>Invoice</a>
                         {{-- @include('report.receipt') --}}
                         {{-- <i class="fa-regular fa-credit-card"></i> --}}
                         {{-- Report
@@ -25,28 +20,18 @@
                 <!-- End -->
                 <div class="row  mt-4 d-flex addMore ">
                     @foreach ($datatest as $data)
-                        <!-- Gallery item -->
-                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 product-box ">
-                            <div class="bg-white rounded add-cart">
-                                <img src="{{ asset('/img/' . $data->picture) }}" alt="Wireless earbud"
-                                    class="product-img" value>
-                                <div class="p-4">
-                                    <p class="item_no">
-                                        {{ Str::limit($data->item_no, 100) }}</p>
-                                    <p class="product_title">
-                                        {{ Str::limit($data->description, 7) }} </p>
-                                    <p class="price">{{ Str::substr($data->price, 0, 4) }}</p>
-                                </div>
-                                <button class="btn bg-primary btn_add" type="submit">Add</button>
+                        <div class="card mt-3 ml-2 product-box" style="width: 10rem;">
+                            <img src="{{ asset('/img/' . $data->picture) }}" alt="Wireless earbud" class="product-img"
+                                value>
+                            <div class="card-body">
+                                <h5 class="item_no">{{ Str::limit($data->item_no, 100) }}</h5>
+                                <p class="product_title">{{ Str::limit($data->description, 7) }}</p>
+                                <p class="price">{{ Str::substr($data->price, 0, 4) }}</p>
                             </div>
                         </div>
                     @endforeach
 
                     <!-- End -->
-                </div>
-                <div>
-                    <a href="#" class="btn btn-warning px-5 py-3 text-uppercase">Proces Topay</a>
-                    <a href="#" class="btn btn-dark px-5 py-3 text-uppercase">Show me more</a>
                 </div>
 
                 <!-- Modal -->

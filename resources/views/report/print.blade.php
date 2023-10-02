@@ -119,9 +119,9 @@
             <div class="d-flex">
                 <div class="col-xl-9 grid-margin stretch-card flex-column ">
                     <p class="fs-4">Thank You!!</p>
-                    <p class="fs-6 fw-bold">Bong-POS $ Blue Technology</p>
+                    <p class="fs-6 fw-bold">Bong-POS </p>
                     <p>
-                        <span>Blue technology is a trusted business software solutions provider focusing on the
+                        <span> business software solutions provider focusing on the
                             Cambodian and
                             ASEAN
                         </span><br>

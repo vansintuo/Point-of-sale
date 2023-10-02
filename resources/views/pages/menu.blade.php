@@ -57,9 +57,7 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ url('customers') }}">List Customer</a></li>
                 </ul>
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Add User</a></li>
-                </ul>
+                
             </div>
         </li>
         <li class="nav-item">
@@ -82,7 +80,7 @@
 
         </li>
 
-        {{-- <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <span class="menu-title">User Pages</span>
                 <i class="menu-arrow"></i>
@@ -93,7 +91,7 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ route('register') }}"> Register </a></li>
                 </ul>
             </div>
-        </li> --}}
+        </li>
 
 
 

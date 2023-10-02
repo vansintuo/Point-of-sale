@@ -115,8 +115,6 @@ class SaleLineController extends Controller
     // insert customer to sale header
     public function add_customers($id)
     {
-
-
         $customer = Customer::where('no', $id)->get();
         // dd($customer[0]);
 
@@ -210,9 +208,20 @@ class SaleLineController extends Controller
         // Select * From sale_header where no = 10 tuk oy ah o mer
         $sale_line = Sale_Line::where('document_no', request('id'))->get();
 
-        // tuk oy ah o mer tt
         // dd($sale_header, $sale_line);
 
         return view('report.print', compact('sale_header', 'sale_line'));
+    }
+
+    //for print invoice on dashboard
+    public function data()
+    {
+        $sale_header = Sale_Headers::where('no', request('id'))->get();
+        // Select * From sale_header where no = 10 tuk oy ah o mer
+        $sale_line = Sale_Line::where('document_no', request('id'))->get();
+        // $data_user = Sale_Line::query()->get();
+        // dd($sale_header, $sale_line);
+        dd($sale_header, $sale_line);
+        return view('pages.dashboard', compact('sale_header', 'sale_line'));
     }
 }

@@ -27,12 +27,12 @@ class MeasuresController extends Controller
         $inactived = $request->input('inactived');
         $data = array('code' => $code, 'description' => $description, 'description_2' => $description_2, 'factor' => $factor, 'inactived' => $inactived);
         Measures::query('add_measures')->insert($data);
-        return redirect('unit_of_measures')->with('status',' success');
-    }   
-    
-    
-    
-    
+        return redirect('unit_of_measures')->with('status', ' success');
+    }
+
+
+
+
     //edit and update measures
     public function edit_measures($code)
     {
@@ -51,11 +51,14 @@ class MeasuresController extends Controller
         return redirect('unit_of_measures')->with('status', 'user update succes!');
     }
 
-      //delete permission
-      public function remove($code)
-      {
-         $measures= Measures:: find($code);
-         $measures->delete();
-        return redirect()->back();
-      }
+    //delete permission
+    public function remove($code)
+    {
+        $measures = Measures::find($code);
+        dd($measures);
+        $measures->delete();
+        return response()->json([
+            'success' => 'Record deleted successfully!'
+        ]);
+    }
 }

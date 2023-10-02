@@ -38,28 +38,18 @@
                                                 <input type="TEXT" class="form-control" id="inputEmail4"
                                                     name="no" required>
                                             </div>
-                                            <div class="form-group col-md-6">
+                                            {{-- <div class="form-group col-md-6">
                                                 <label for="inputEmail4" name="email">no_2</label>
                                                 <input type="TEXT" class="form-control" id="inputEmail4"
                                                     name="no_2">
-                                            </div>
+                                            </div> --}}
                                             <div class="form-group col-md-6">
                                                 <label for="inputName" name="name">description</label>
                                                 <input type="text" class="form-control" id="inputName"
                                                     placeholder="Name" name="description">
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputSelesperson"
-                                                    name="salesperson_code">description_2</label>
-                                                <input type="text" class="form-control" id="inputEmail4"
-                                                    placeholder="Selesperson" name="description_2">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputSelesperson"
-                                                    name="salesperson_code">item_group_code</label>
-                                                <input type="text" class="form-control" id="inputEmail4"
-                                                    placeholder="Selesperson" name="item_group_code">
-                                            </div>
+
+
                                             <div class="form-group col-md-6">
                                                 <label for="inputSelesperson"
                                                     name="salesperson_code">item_category_code</label>
@@ -138,8 +128,6 @@
                 <script>
                     $(document).ready(function() {
                         $('#btn_sub').on('click', function() {
-
-                            // alert("7777")
                             Swal.fire({
                                 position: 'top-end',
                                 icon: 'success',
